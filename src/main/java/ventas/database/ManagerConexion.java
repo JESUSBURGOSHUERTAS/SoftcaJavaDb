@@ -1,5 +1,7 @@
 package ventas.database;
 
+import java.sql.Connection;
+
 public class ManagerConexion {
 
     private static ManagerConexion instance;
@@ -46,5 +48,9 @@ public class ManagerConexion {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public Connection getConnection(){
+        return Conex.getCon();
     }
 }

@@ -1,5 +1,6 @@
 package ventas.facade;
 
+import ventas.database.ManagerConexion;
 import ventas.exception.DaoException;
 import ventas.exception.ExceptionFacade;
 import ventas.gmr.ProductoManager;
@@ -14,10 +15,15 @@ public class ProductosFacade {
     }
     public void save(Productos p) throws ExceptionFacade {
         try {
+            ManagerConexion.getInstance().open();
             Pm.save(p);
+            ManagerConexion.getInstance().commit();
         }catch (Exception E){
+            ManagerConexion.getInstance().rollback();
             throw new ExceptionFacade(E);
 
+        }finally {
+            ManagerConexion.getInstance().close();
         }
 
     }
@@ -42,14 +48,5 @@ public class ProductosFacade {
 
     }
 
-    public void Process(Productos dto) throws ExceptionFacade{
 
-        try {
-            Pm.save(dto);
-        }catch (Exception E){
-            throw new ExceptionFacade(E);
-
-        }
-
-    }
 }

@@ -6,17 +6,15 @@ public class Conexion {
 
     private Connection Conn = null;
 
-    public Connection getConn() {
-        return Conn;
-    }
+
 
     public void conector(){
         try {
-            String sURL = "jdbc:mysql://localhost:3306/lineadecodigo";
-            Conn = DriverManager.getConnection(sURL,"root","B7809297bt7");
+            String sURL = "jdbc:mysql://localhost:3306/softca";
+            Conn = DriverManager.getConnection(sURL,"root","B7809297bt7.");
             Conn.setAutoCommit(false);
         }catch (Exception ex){
-        ex.printStackTrace();
+            ex.printStackTrace();
         }
     }
     public Connection getCon(){

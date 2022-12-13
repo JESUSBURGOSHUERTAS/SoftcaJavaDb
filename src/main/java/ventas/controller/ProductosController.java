@@ -15,7 +15,7 @@ private ProductosFacade Pf;
 
     public void Process(Productos dto) throws ExceptionController {
         try {
-            Pf.Process(dto);
+            Pf.save(dto);
         }catch (Exception E){
             throw new ExceptionController(E);
 

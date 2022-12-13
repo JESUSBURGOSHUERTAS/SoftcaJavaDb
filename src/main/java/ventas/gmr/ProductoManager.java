@@ -1,8 +1,7 @@
 package ventas.gmr;
 
 import ventas.dto.Productos;
-import ventas.Dao.ProductoDAO;
-import ventas.exception.DaoException;
+import ventas.dao.ProductoDAO;
 import ventas.exception.ExceptionManager;
 
 public class ProductoManager {
@@ -17,7 +16,8 @@ public class ProductoManager {
     public void save(Productos p) throws ExceptionManager {
         try {
             Productos tp = dao.selectById(p);
-            if (tp!=null){
+            System.out.println(tp);
+            if (tp==null){
                 dao.insert(p);
             } else {
                 dao.update(p);
